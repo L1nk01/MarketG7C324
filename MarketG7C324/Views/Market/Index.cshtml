@@ -1,0 +1,113 @@
+﻿@* Strong Typed Views - Razor *@
+@model Application.ViewModels.ProductListViewModel
+
+@{
+    ViewData["Title"] = "Market List";
+
+    if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+    {
+        <div class="alert @ViewBag.MessageType" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+}
+
+<h1>@ViewData["title"]</h1>
+
+<div class="row">
+    <div class="col-4 col-sm-4">
+        <div class="card">
+            <div class="card-header bg-danger text-light"><strong>Frutas</strong></div>
+            <div class="card-body">
+                @if (Model.Fruits.Count == 0)
+                {
+                    <h2>No hay frutas</h2>
+                } 
+                else
+                {
+                    <table class="table">
+                        <thead>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model.Fruits)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Price.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4 col-sm-4">
+        <div class="card">
+            <div class="card-header bg-success text-light"><strong>Vegetales</strong></div>
+            <div class="card-body">
+                @if (Model.Vegetables.Count == 0)
+                {
+                    <h2>No hay vegetales</h2>
+                }
+                else
+                {
+                    <table class="table">
+                        <thead>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Vegetables)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Price.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4 col-sm-4">
+        <div class="card">
+            <div class="card-header bg-warning text-light"><strong>Lacteos</strong></div>
+            <div class="card-body">
+                @if (Model.Dairy.Count == 0)
+                {
+                    <h2>No hay lacteos</h2>
+                }
+                else
+                {
+                    <table class="table">
+                        <thead>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Dairy)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Price.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>

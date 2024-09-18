@@ -1,0 +1,54 @@
+﻿@* Strong Typed Views - Razor *@
+@model Application.ViewModels.CreateProductViewModel
+
+@{
+    ViewData["Title"] = "Market List";
+}
+
+<h1>@ViewData["title"]</h1>
+
+<div class="row">
+    <div class="col-4 col-sm-4 offset-sm-4">
+        <div class="card">
+            <div class="card-header bg-primary text-light"><strong>Nuevo Producto</strong></div>
+            <div class="card-body">
+                <form asp-controller="Market" asp-action="Create" method="post">
+                    <div class="mb-2">
+                        <label class="form-label" asp-for="Name">Nombre</label>
+                        <input type="text" asp-for="Name" class="form-control" required/>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label" asp-for="Description">Descripción</label>
+                        <input type="text" asp-for="Description" class="form-control" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label" asp-for="Price">Precio</label>
+                        <input type="number" step="any" asp-for="Price" inputmode="numeric" pattern="[0-9]*" class="form-control" required/>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label" asp-for="Category" required>Categoría</label>
+                        <select asp-for="Category" class="form-select">
+                            <option value="1">Frutas</option>
+                            <option value="2">Vegetales</option>
+                            <option value="3">Lacteos</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-outline-primary float-end">Guardar</button>
+                        <a asp-controller="Market" asp-action="Index" class="btn btn-outline-warning float-end me-2">Volver</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4 col-sm-4">
+    </div>
+
+    <div class="col-4 col-sm-4">
+    </div>
+</div>
